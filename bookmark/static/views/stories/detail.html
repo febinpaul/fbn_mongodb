@@ -1,0 +1,42 @@
+<h1>{{story.title}}</h1>
+<h2> by {{story.fullname}}</h2>
+<hr>
+<div>
+<p class="lead">
+      {{story.title}}
+</p>
+</div>
+<div>
+	<u>Comments</u>
+</div>
+<table class="table table-striped">
+	<tr ng-repeat="comment in story.comments">
+		<td>{{comment.comment_text}}</td>
+		<td>{{comment.comment_name}}</td>
+		<td>{{comment.comment_date}}</td>
+	</tr>
+</table>
+
+<div>
+	<h4><u>Add New Comments</u></h4>
+</div>
+
+<form novalidate class="form2-horizontal" ng-submit="save_comment()">
+	
+	<div class="control-group">
+		<label class="control-label" for="name">Your Name</label>
+		<div class="controls">
+			<input type="text" ng-model="comment.name" id="name" required/>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="comment">Enter Your Comments</label>
+		<div class="controls">
+			<textarea type="text" ng-model="comment.comment" id="comment" required></textarea>
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<button id="save" class="btn btn-primary">Submit Story</button>
+	</div>
+</form>

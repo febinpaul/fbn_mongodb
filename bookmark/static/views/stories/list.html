@@ -1,0 +1,57 @@
+<style type="text/css">
+	span {
+    display: none;
+}
+.show {
+    display: inline-block;
+}
+
+</style>
+<input type="text" id="search" name="search" onkeyup="search();" /> 
+<h2>
+	Blogs <a class="btn btn-primary pull-right" href="#/stories/new"><i
+		class="icon-plus-sign icon-white"></i> Submit New Blog</a>
+</h2>
+
+<style type="text/css">
+	.comments{
+		padding: 5px 10px 0px 100px !important; 
+	}
+</style>
+<div id="manage_user">
+<table class="table table-striped">
+	<tr ng-repeat="story in stories">
+		<td>
+			<table style=" width: 100%; ">
+				<tr>
+					<td><a href="#/stories/{{story._id.$oid}}">{{story.title}}</a></td>
+					<td>{{story.posted_by}}</td>
+					<td><u>Tags:</u> <p ng-repeat="data in story.tags">
+						{{data}}
+					</p></td>
+					<td><a href="#/like/{{story._id.$oid}}">Like</a>| {{story.likes}} Likes</td>
+				</tr>
+				<tr>
+					<td>
+					<p>Posted Comments:</p>
+					</td>
+				</tr>
+				<tr ng-repeat="comments in story.comments">
+					<!-- <td class="comments">{{comments.comment_text}}</td>
+					<td class="comments">{{comments.comment_name}}</td>
+					<td class="comments">{{comments.comment_date}}</td> -->
+					<td colspan="3">
+						<div class="comments">
+							<div>{{comments.comment_text}}</div>
+							<div><p>{{comments.comment_name}}</p></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+
+		</td>
+		
+		
+	</tr>
+</table>
+</div>
