@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}	
+	{% block postdata%}
+		<h4>{{ data.title }}</h4>
+			{{ data.text|linebreaks }}
+	{% endblock %}
+<form action="." method="post">{% csrf_token %}
+<div>
+<div>
+Name : <input type="text" name="name"/>
+</div>
+
+<div>
+Enter Your Comments : <textarea  name="comment_text"></textarea>
+<input type="submit"/>
+</div>
+
+</div>
+</form>
+{% endblock %}
