@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+  
+
+{% block content %}
+{% include "search.html" %}  
+	{% for post in post_list %}		
+		<div style="margin-bottom: 20px;">
+			<h4>{{ post.title }}</h4>
+			{{ post.text|linebreaks }}
+			{% if post.tags|length > 0%}
+				Tags: {% for value in post.tags%}<a>{{value}}&nbsp;&nbsp;</a>{% endfor %}
+			{% endif %}
+
+			{% if post.comments|length > 0%}
+			<div id="posted_comments" style=" margin: 8px 50px 2px 50px; ">
+			<table style=" width: 100%; ">
+				<u>Posted Comments:</u> {% for value in post.comments%}<tr><td style=" width: 543px; ">{{value.comment_text}}</td><td>{{value.name}}</td><td>{{value.posted_date}}</td></tr>{% endfor %}
+			</table>
+			</div>
+			{% endif %}
+			<br>
+			<a href="{{ post.get_absolute_url }}" class="btn btn-small">Read</a> 
+			<a href="{{ post.get_edit_url }}" class="btn btn-small">Edit</a> 
+			<a href="{{ post.get_delete_url }}" class="btn btn-small">Delete</a>
+		</div>
+		<div>
+			<a href="{{ post.get_comments }}" class="show_comment">Add Comments</a>
+		</div>
+		<div id="comment_div">
+		</div>
+	{% endfor %}
+{% endblock %}
+

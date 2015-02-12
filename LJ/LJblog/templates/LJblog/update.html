@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}	
+	<form action="." method="post">{% csrf_token %}
+		{{ form.as_p }}
+		{% for value in post.tags%}
+		<div><input type="text" name="mytext" value="{{value}}"/><a href="#" class="remove_field">Remove</a></div>
+		{% endfor%}
+		<input type="submit"/>
+	</form>
+{% endblock %}
+

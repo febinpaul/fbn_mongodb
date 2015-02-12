@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+	<form action="." method="post">{% csrf_token %}
+		{{ form.as_p }}
+
+		<div>
+			<a><p id="add_tags">Add Tags</p></a>
+		</div>
+		<div id="append_tags"></div>
+		<input type="hidden" id="hidden_tags" value="0"/>
+		<input type="submit"/>
+	</form>
+{% endblock %}
+
